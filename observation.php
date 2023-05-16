@@ -41,6 +41,19 @@ if(!isset($_SESSION["email"])){
                     </div>
                     <div class="col-xl-12 mb-5">
                         <div class="swiper-leadteam swiper-container">
+                                        <?php
+                                            if(isset($_GET["error"])){
+                                            if($_GET["error"] == "emptyinput" ){
+                                                echo'
+                                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                <strong>Oops!</strong> Fill the fields!
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                              </div>
+                                                // <p class ="alerts errormsg">  </p>
+                                                ';
+                                            }
+                                            }
+                                        ?>
                             <div class="">
                             <form action="controller/registerController.php" style="width:50%; margin:auto;" method="post">
                               <div>

@@ -22,12 +22,19 @@ if(isset($_POST['register'])){
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $location = $_POST['location'];
+    $password = $_POST['password'];
+    $rpassword = $_POST['rpassword'];
 
    
 
     // Query an Empty field
-    if(emptySignup($fullname, $email, $phone, $location) == false){
+    if(emptySignup($fullname, $email, $phone, $location, $password, $rpassword) == false){
         header('location: ../register.php?error=emptyinput');
+        exit();
+    }
+
+    if(PMatch($password, $rpassword) !== false){ 
+        header('location: ../register.php?error=incorrectPassword');
         exit();
     }
 
@@ -35,13 +42,10 @@ if(isset($_POST['register'])){
         header('location: ../register.php?error=userexit');
         exit();
     }else{
-        createuser($dbconnect, $fullname, $email, $phone, $location);
+        createuser($dbconnect, $fullname, $email, $phone, $location, $password);
     }
 
-    // if(PMatch($password,$rpassword) !== false){ 
-    //     header('location: ../register.php?error=incorrectPassword');
-    //     exit();
-    // }
+    
 
     
 }
