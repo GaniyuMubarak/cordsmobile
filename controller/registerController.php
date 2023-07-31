@@ -65,9 +65,9 @@ if(isset($_POST['login'])){
     if(userOccur($dbconnect, $email, $password) == false){
         header('location: ../login.php?error=usernotoccure');
         exit();
-}
-loginUser($dbconnect, $email, $password);
-}
+    }
+    loginUser($dbconnect, $email, $password);       
+    }
 
 if(isset($_POST['complainButton'])){
 
